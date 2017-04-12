@@ -1,0 +1,22 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.1'
+    }
+}
+
+plugins {
+    id "com.github.hierynomus.license" version "0.13.1" apply false
+}
+
+subprojects {
+    repositories {
+        jcenter()
+    }
+
+    apply plugin: "com.github.hierynomus.license"
+    apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/license0.13.1.gradle'
+}
