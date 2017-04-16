@@ -1,5 +1,7 @@
 # PolygonDrawingUtil
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PolygonDrawingUtil-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/5597)
+
 An efficient Android utility class for drawing regular polygons on a [`Canvas`](https://developer.android.com/reference/android/graphics/Canvas.html).
 
 Consumers can specify:
