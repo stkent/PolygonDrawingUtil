@@ -139,8 +139,8 @@ public class PolygonDrawingUtil {
              *    start of the arc. However, if the path is empty, then we call moveTo() with the first point of the
              *    arc."
              *
-             * We construct our polygon by sequentially drawing constructRoundedPolygonPath corners using arcTo, and
-             * leverage the automatically-added moveTo/lineTo instructions to connect these corners with straight edges.
+             * We construct our polygon by sequentially drawing rounded corners using arcTo, and leverage the
+             * automatically-added moveTo/lineTo instructions to connect these corners with straight edges.
              */
             backingPath.arcTo(
                     tempCornerArcBounds,
