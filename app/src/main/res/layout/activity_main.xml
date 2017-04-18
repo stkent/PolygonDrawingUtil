@@ -24,7 +24,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <com.stkent.polygondrawingutil.DemoView
+    <com.stkent.polygondrawingutildemo.DemoView
         android:id="@+id/demo_view"
         android:layout_width="wrap_content"
         android:layout_height="0dp"

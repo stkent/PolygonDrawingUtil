@@ -9,7 +9,7 @@ buildscript {
 }
 
 plugins {
-    id "com.github.hierynomus.license" version "0.13.1" apply false
+    id 'com.github.hierynomus.license' version '0.13.1' apply false
 }
 
 subprojects {
@@ -17,6 +17,8 @@ subprojects {
         jcenter()
     }
 
-    apply plugin: "com.github.hierynomus.license"
+    apply plugin: 'com.github.hierynomus.license'
     apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/license0.13.1.gradle'
 }
+
+ext.supportLibraryVersion = '25.3.1'
