@@ -17,7 +17,7 @@ Consumers can specify:
 
 ![](assets/demo.gif)
 
-This video was captured using the sample application in this repository. It provides convenient controls for exploring `PolygonDrawingUtil`'s parameter space.
+This video was captured using the sample application in this repository. It provides convenient controls for exploring `PolygonDrawingUtil`'s capabilities.
 
 # Getting Started
 
