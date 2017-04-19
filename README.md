@@ -21,23 +21,38 @@ This video was captured using the sample application in this repository. It prov
 
 # Getting Started
 
-## Integration
+1. Specify PolygonDrawingUtil as a dependency in your `build.gradle` file:
 
-1. Copy the [`PolygonDrawingUtil` class](https://raw.githubusercontent.com/stkent/PolygonDrawingUtil/master/app/src/main/java/com/stkent/polygondrawingutil/PolygonDrawingUtil.java) into your app's source directory.
+    ```groovy
+    dependencies {
+      compile 'com.stkent:polygondrawingutil:1.0.0'
+    }
+    ```
 
-2. Update the class package statement.
+2. Create a new `PolygonDrawingUtil` instance and assign it to a field in your custom view class:
 
-3. If your project does not already depend either directly or indirectly (e.g. via appcompat-v7) on the [Android Support Annotations package](https://developer.android.com/studio/write/annotations.html), follow [these instructions](https://developer.android.com/studio/write/annotations.html#adding-library) to add that package as a dependency of your project.
+    ```java
+    private PolygonDrawingUtil polygonDrawingUtil = new PolygonDrawingUtil();
+    ```
 
-## Usage
+3. Call `polygonDrawUtil.drawPolygon` in your `onDraw` method:
 
-1. Create a new `PolygonDrawingUtil` instance and assign it to a field in your custom view code.
+    ```java
+    @Override
+    protected void onDraw(Canvas canvas) {
+      super.onDraw(canvas);
 
-2. Call `polygonDrawUtil.drawPolygon` in your `onDraw` method!
-
-# TODO
-
-- Distribute via jCenter.
+      polygonDrawingUtil.drawPolygon(
+          canvas,
+          numberOfSides,
+          centerX,
+          centerY,
+          polygonRadius,
+          cornerRadius,
+          rotation,
+          polygonPaint);
+    }
+    ```
 
 # License
 

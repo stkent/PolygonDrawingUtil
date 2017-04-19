@@ -1,4 +1,40 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
+}
+
 apply plugin: 'com.android.library'
+
+ext {
+    // Library info:
+    libraryVersion = '1.0.0'
+    libraryName = 'PolygonDrawingUtil'
+    libraryGroupId = 'com.stkent'
+    libraryArtifactId = 'polygondrawingutil'
+    libraryDescription = 'An efficient Android utility class for drawing regular polygons on a Canvas.'
+    libraryInceptionYear = '2017'
+    libraryGitHubRepoName = 'stkent/PolygonDrawingUtil'
+    libraryGitHubUrl = "https://github.com/$libraryGitHubRepoName"
+    libraryIssueTrackerUrl = "$libraryGitHubUrl/issues"
+    libraryWebsiteUrl = libraryGitHubUrl
+    libraryLabels = ['android', 'android-ui', 'android-view', 'geometry', 'drawing', 'polygons']
+    libraryLicenseName = 'Apache License Version 2.0'
+    libraryLicenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.html'
+
+    // Developer info:
+    developerId = 'stkent'
+    developerName = 'Stuart Kent'
+    developerEmail = 'skent.dev@gmail.com'
+
+    // Bintray categorization information:
+    bintrayRepo = 'android-libraries'
+}
 
 android {
     compileSdkVersion 25
@@ -8,10 +44,13 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName libraryVersion
     }
 }
 
 dependencies {
     compile "com.android.support:support-annotations:$supportLibraryVersion"
 }
+
+apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/bintray1.7.3.gradle'
+apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/install1.5.gradle'
