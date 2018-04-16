@@ -38,15 +38,15 @@ public class MainActivity extends AppCompatActivity implements OnSeekBarChangeLi
 
         setContentView(R.layout.activity_main);
 
-        cornerRadiusSeekBar = (SeekBar) findViewById(R.id.corner_radius_seek_bar);
-        rotationSeekBar = (SeekBar) findViewById(R.id.rotation_seek_bar);
-        scaleSeekBar = (SeekBar) findViewById(R.id.scale_seek_bar);
+        cornerRadiusSeekBar = findViewById(R.id.corner_radius_seek_bar);
+        rotationSeekBar = findViewById(R.id.rotation_seek_bar);
+        scaleSeekBar = findViewById(R.id.scale_seek_bar);
 
         cornerRadiusSeekBar.setOnSeekBarChangeListener(this);
         rotationSeekBar.setOnSeekBarChangeListener(this);
         scaleSeekBar.setOnSeekBarChangeListener(this);
 
-        demoView = (DemoView) findViewById(R.id.demo_view);
+        demoView = findViewById(R.id.demo_view);
         updateCornerRadius(cornerRadiusSeekBar.getProgress());
         updateRotation(rotationSeekBar.getProgress());
         updateScale(scaleSeekBar.getProgress());
