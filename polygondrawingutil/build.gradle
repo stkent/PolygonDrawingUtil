@@ -1,11 +1,12 @@
 buildscript {
     repositories {
+        google()
         jcenter()
     }
 
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
 
@@ -13,7 +14,7 @@ apply plugin: 'com.android.library'
 
 ext {
     // Library info:
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.1.0'
     libraryName = 'PolygonDrawingUtil'
     libraryGroupId = 'com.stkent'
     libraryArtifactId = 'polygondrawingutil'
@@ -37,19 +38,17 @@ ext {
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
-
+    compileSdkVersion 27
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName libraryVersion
     }
 }
 
 dependencies {
-    compile "com.android.support:support-annotations:$supportLibraryVersion"
+    implementation "com.android.support:support-annotations:$supportLibraryVersion"
 }
 
 apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/bintray1.7.3.gradle'
