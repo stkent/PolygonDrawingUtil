@@ -5,7 +5,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
@@ -51,5 +51,5 @@ dependencies {
     implementation "com.android.support:support-annotations:$supportLibraryVersion"
 }
 
-apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/bintray1.7.3.gradle'
+apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/bintray1.8.0.gradle'
 apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/install2.1.gradle'
