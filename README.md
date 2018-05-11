@@ -54,9 +54,26 @@ This video was captured using the sample application in this repository. It prov
     }
     ```
 
+    Alternately, you can supply your own `Path` instance and ask `PolygonDrawingUtil` to fill it with a polygon:
+
+    ```java
+    Path myPath = new Path();
+
+    polygonDrawingUtil.constructPolygonPath(
+        myPath,
+        numberOfSides,
+        centerX,
+        centerY,
+        polygonRadius,
+        cornerRadius,
+        rotation);
+    ```
+
+    This allows you to perform post-processing on the `Path` before drawing to a `Canvas`.
+
 # License
 
-	Copyright 2017 Stuart Kent
+	Copyright 2018 Stuart Kent
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
