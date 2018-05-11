@@ -19,6 +19,7 @@ package com.stkent.polygondrawingutildemo;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -40,6 +41,8 @@ public class DemoView extends View {
     private float rotation = 0;
     private float scale;
 
+    private final Path strokePath = new Path();
+
     public DemoView(final Context context, @Nullable final AttributeSet attrs) {
         super(context, attrs);
 
@@ -59,6 +62,7 @@ public class DemoView extends View {
         final float centerY = getHeight() / 2;
         final float radius = scale * (getWidth() / 2 - strokeWidth);
 
+        // Method 1 (simpler for direct drawing):
         polygonDrawingUtil.drawPolygon(
                 canvas,
                 numberOfSides,
@@ -69,15 +73,17 @@ public class DemoView extends View {
                 rotation,
                 polygonFillPaint);
 
-        polygonDrawingUtil.drawPolygon(
-                canvas,
+        // Method 2 (allows polygon Path post-processing if desired):
+        polygonDrawingUtil.constructPolygonPath(
+                strokePath,
                 numberOfSides,
                 centerX,
                 centerY,
                 radius,
                 cornerRadius,
-                rotation,
-                polygonStrokePaint);
+                rotation);
+
+        canvas.drawPath(strokePath, polygonStrokePaint);
     }
 
     public int getNumberOfSides() {

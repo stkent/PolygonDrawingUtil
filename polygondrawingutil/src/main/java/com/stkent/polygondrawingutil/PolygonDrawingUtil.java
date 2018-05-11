@@ -17,6 +17,7 @@
 package com.stkent.polygondrawingutil;
 
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
@@ -40,15 +41,17 @@ public class PolygonDrawingUtil {
     /**
      * Draws a regular polygon.
      *
-     * Note that this method is not thread safe. This is not an issue if (as is typical) all invocations are made on the
-     * UI thread.
+     * Note that this method is not thread safe. This is not an issue if (as is typical) all
+     * invocations are made from a single thread.
      *
      * @param canvas       the {@link Canvas} to draw on
      * @param sideCount    the number of sides of the polygon
      * @param centerX      the x-coordinate of the polygon center in pixels
      * @param centerY      the y-coordinate of the polygon center in pixels
-     * @param outerRadius  the distance from the polygon center to any vertex (ignoring corner rounding) in pixels
-     * @param cornerRadius the radius of the rounding applied to each corner of the polygon in pixels
+     * @param outerRadius  the distance from the polygon center to any vertex (ignoring corner
+     *                      rounding) in pixels
+     * @param cornerRadius the radius of the rounding applied to each corner of the polygon in
+     *                      pixels
      * @param rotation     the rotation of the polygon in degrees
      * @param paint        the {@link Paint} to draw with
      */
@@ -62,32 +65,77 @@ public class PolygonDrawingUtil {
             final float rotation,
             @NonNull final Paint paint) {
 
+        constructPolygonPath(
+                backingPath,
+                sideCount,
+                centerX,
+                centerY,
+                outerRadius,
+                cornerRadius,
+                rotation);
+
+        canvas.drawPath(backingPath, paint);
+    }
+
+    /**
+     * Constructs a regular polygonal {@link Path}.
+     *
+     * @param path         the {@link Path} to be filled with polygon components. Will be reset.
+     * @param sideCount    the number of sides of the polygon
+     * @param centerX      the x-coordinate of the polygon center in pixels
+     * @param centerY      the y-coordinate of the polygon center in pixels
+     * @param outerRadius  the distance from the polygon center to any vertex (ignoring corner
+     *                      rounding) in pixels
+     * @param cornerRadius the radius of the rounding applied to each corner of the polygon in
+     *                      pixels
+     * @param rotation     the rotation of the polygon in degrees
+     */
+    public void constructPolygonPath(
+            @NonNull final Path path,
+            @IntRange(from = 3) final int sideCount,
+            final float centerX,
+            final float centerY,
+            @FloatRange(from = 0, fromInclusive = false) final float outerRadius,
+            @FloatRange(from = 0) final float cornerRadius,
+            final float rotation) {
+
+        path.reset();
+
         final float inRadius = (float) (outerRadius * Math.cos(toRadians(180.0 / sideCount)));
 
         if (inRadius < cornerRadius) {
             /*
-             * If the supplied corner radius is too small, we default to drawing the "incircle".
+             * If the supplied corner radius is too small, we default to the "incircle".
              *   - https://web.archive.org/web/20170415150442/https://en.wikipedia.org/wiki/Regular_polygon
              *   - https://web.archive.org/web/20170415150415/http://www.mathopenref.com/polygonincircle.html
              */
-            canvas.drawCircle(centerX, centerY, inRadius, paint);
+            path.addCircle(centerX, centerY, inRadius, Path.Direction.CW);
         } else {
-            canvas.save();
-            canvas.rotate(-rotation, centerX, centerY);
-            backingPath.rewind();
-
             if (abs(cornerRadius) < 0.01) {
-                constructNonRoundedPolygonPath(sideCount, centerX, centerY, outerRadius);
+                constructNonRoundedPolygonPath(
+                        path,
+                        sideCount,
+                        centerX,
+                        centerY,
+                        outerRadius);
             } else {
-                constructRoundedPolygonPath(sideCount, centerX, centerY, outerRadius, cornerRadius);
+                constructRoundedPolygonPath(
+                        path,
+                        sideCount,
+                        centerX,
+                        centerY,
+                        outerRadius,
+                        cornerRadius);
             }
 
-            canvas.drawPath(backingPath, paint);
-            canvas.restore();
+            final Matrix rotationMatrix = new Matrix();
+            rotationMatrix.setRotate(rotation, centerX, centerY);
+            path.transform(rotationMatrix);
         }
     }
 
     private void constructNonRoundedPolygonPath(
+            @NonNull final Path path,
             @IntRange(from = 3) final int sideCount,
             final float centerX,
             final float centerY,
@@ -99,17 +147,18 @@ public class PolygonDrawingUtil {
             final float cornerY = (float) (centerY + outerRadius * sin(toRadians(angleToCorner)));
 
             if (cornerNumber == 0) {
-                backingPath.moveTo(cornerX, cornerY);
+                path.moveTo(cornerX, cornerY);
             } else {
-                backingPath.lineTo(cornerX, cornerY);
+                path.lineTo(cornerX, cornerY);
             }
         }
 
         // Draw the final straight edge.
-        backingPath.close();
+        path.close();
     }
 
     private void constructRoundedPolygonPath(
+            @NonNull final Path path,
             @IntRange(from = 3) final int sideCount,
             final float centerX,
             final float centerY,
@@ -142,14 +191,14 @@ public class PolygonDrawingUtil {
              * We construct our polygon by sequentially drawing rounded corners using arcTo, and leverage the
              * automatically-added moveTo/lineTo instructions to connect these corners with straight edges.
              */
-            backingPath.arcTo(
+            path.arcTo(
                     tempCornerArcBounds,
                     (float) (angleToCorner - halfCornerArcSweepAngle),
                     2 * halfCornerArcSweepAngle);
         }
 
         // Draw the final straight edge.
-        backingPath.close();
+        path.close();
     }
 
     private static double toRadians(final double degrees) {
