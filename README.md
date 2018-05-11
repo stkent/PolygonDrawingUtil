@@ -25,7 +25,7 @@ This video was captured using the sample application in this repository. It prov
 
     ```groovy
     dependencies {
-      compile 'com.stkent:polygondrawingutil:1.0.0'
+      implementation 'com.stkent:polygondrawingutil:1.1.0'
     }
     ```
 
