@@ -18,7 +18,7 @@ ext {
     libraryName = 'PolygonDrawingUtil'
     libraryGroupId = 'com.stkent'
     libraryArtifactId = 'polygondrawingutil'
-    libraryDescription = 'An efficient Android utility class for drawing regular polygons on a Canvas.'
+    libraryDescription = 'A compact Android utility for constructing and drawing rounded regular polygons.'
     libraryInceptionYear = '2017'
     libraryGitHubRepoName = 'stkent/PolygonDrawingUtil'
     libraryGitHubUrl = "https://github.com/$libraryGitHubRepoName"

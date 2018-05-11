@@ -31,7 +31,7 @@ import static java.lang.Math.cos;
 import static java.lang.Math.sin;
 
 /**
- * An efficient utility class for drawing regular polygons on a {@link Canvas}.
+ * A utility class for constructing and drawing rounded regular polygons.
  */
 public class PolygonDrawingUtil {
 
