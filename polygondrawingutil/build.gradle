@@ -52,4 +52,4 @@ dependencies {
 }
 
 apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/bintray1.7.3.gradle'
-apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/install1.5.gradle'
+apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/install2.1.gradle'
