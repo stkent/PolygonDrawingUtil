@@ -2,7 +2,7 @@
 
  [ ![Download](https://api.bintray.com/packages/stkent/android-libraries/PolygonDrawingUtil/images/download.svg) ](https://bintray.com/stkent/android-libraries/PolygonDrawingUtil/_latestVersion) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PolygonDrawingUtil-green.svg?style=flat)](https://android-arsenal.com/details/1/5597)
 
-An efficient Android utility class for drawing regular polygons on a [`Canvas`](https://developer.android.com/reference/android/graphics/Canvas.html).
+A compact Android utility for constructing and drawing rounded regular polygons.
 
 Consumers can specify:
 
