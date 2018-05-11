@@ -11,7 +11,8 @@ Consumers can specify:
 - outer radius (center to vertex);
 - corner rounding radius;
 - polygon rotation;
-- fill/stroke [`Paint`](https://developer.android.com/reference/android/graphics/Paint.html).
+- (optional) fill/stroke [`Paint`](https://developer.android.com/reference/android/graphics/Paint.html);
+- (optional) target [`Path`](https://developer.android.com/reference/android/graphics/Path) instance.
 
 # Demo
 
