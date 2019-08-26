@@ -74,7 +74,7 @@ This video was captured using the sample application in this repository. It prov
 
 # License
 
-	Copyright 2018 Stuart Kent
+	Copyright 2019 Stuart Kent
 
 	Licensed under the Apache License, Version 2.0 (the "License");
 	you may not use this file except in compliance with the License.
