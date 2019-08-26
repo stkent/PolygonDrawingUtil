@@ -30,35 +30,35 @@ This video was captured using the sample application in this repository. It prov
     }
     ```
 
-2. Create a new `PolygonDrawingUtil` instance and assign it to a field in your custom view class:
+2. Create a new `PolygonDrawingUtil` instance and assign it to a property in your custom view class:
 
-    ```java
-    private PolygonDrawingUtil polygonDrawingUtil = new PolygonDrawingUtil();
+    ```kotlin
+    private val polygonDrawingUtil = PolygonDrawingUtil()
     ```
 
 3. Call `polygonDrawUtil.drawPolygon` in your `onDraw` method:
 
-    ```java
-    @Override
-    protected void onDraw(Canvas canvas) {
-      super.onDraw(canvas);
+    ```kotlin
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
 
-      polygonDrawingUtil.drawPolygon(
-          canvas,
-          numberOfSides,
-          centerX,
-          centerY,
-          polygonRadius,
-          cornerRadius,
-          rotation,
-          polygonPaint);
+        polygonDrawingUtil.drawPolygon(
+            canvas,
+            numberOfSides,
+            centerX,
+            centerY,
+            polygonRadius,
+            cornerRadius,
+            rotation,
+            polygonPaint
+        )
     }
     ```
 
     Alternately, you can supply your own `Path` instance and ask `PolygonDrawingUtil` to fill it with a polygon:
 
-    ```java
-    Path myPath = new Path();
+    ```kotlin
+    val myPath = Path()
 
     polygonDrawingUtil.constructPolygonPath(
         myPath,
@@ -67,7 +67,8 @@ This video was captured using the sample application in this repository. It prov
         centerY,
         polygonRadius,
         cornerRadius,
-        rotation);
+        rotation
+    )
     ```
 
     This allows you to perform post-processing on the `Path` before drawing to a `Canvas`.
