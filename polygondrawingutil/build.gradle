@@ -14,7 +14,7 @@ apply plugin: 'com.android.library'
 
 ext {
     // Library info:
-    libraryVersion = '1.1.0'
+    libraryVersion = '1.2.0'
     libraryName = 'PolygonDrawingUtil'
     libraryGroupId = 'com.stkent'
     libraryArtifactId = 'polygondrawingutil'
