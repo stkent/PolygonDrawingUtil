@@ -58,7 +58,7 @@ This video was captured using the sample application in this repository. It prov
     Alternately, you can supply your own `Path` instance and ask `PolygonDrawingUtil` to fill it with a polygon:
 
     ```kotlin
-    val myPath = Path()
+    private val myPath = Path()
 
     polygonDrawingUtil.constructPolygonPath(
         myPath,
