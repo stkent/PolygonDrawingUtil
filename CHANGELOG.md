@@ -1,5 +1,14 @@
 # Change Log
 
+## v1.2.0
+
+_2019-08-26_
+
+- [Internal] Updated compile and target SDK versions.
+- [Internal] Updated dependencies to use AndroidX versions.
+- [Internal] Converted sample app to Kotlin.
+- [Internal] Updated Gradle.
+
 ## v1.1.0
 
 _2018-05-11_
