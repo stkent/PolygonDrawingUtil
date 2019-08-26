@@ -48,7 +48,7 @@ android {
 }
 
 dependencies {
-    implementation "com.android.support:support-annotations:$supportLibraryVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
 }
 
 apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/bintray1.8.0.gradle'

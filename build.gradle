@@ -21,4 +21,4 @@ subprojects {
     apply from: 'https://raw.githubusercontent.com/stkent/JCenter/master/license0.15.0.gradle'
 }
 
-ext.supportLibraryVersion = '28.0.0'
+ext.appCompatVersion = '1.0.2'
